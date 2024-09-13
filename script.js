@@ -16,14 +16,35 @@ getComputerChoice()
 
 /*Get human choice */
 function getHumanChoice() {
+
+   
+
+
 let text;
 let person = prompt("Rock, Paper, or Scissors?");
-if (person == null || person == "") {
-    text = "Please type your choice";
-}else {
-text = person;
+
+if (person == "rock"|| person=="paper" || person == "scissors") {
+     text = "you have entered " + person;
+} else if ( person == null || person == ""){
+    text= "Please type your choice"
+} else {
+    text = "That was an invalid choice"
 }
 document.getElementById("textChoice").innerHTML = text;
-}
 
+}
 getHumanChoice()
+
+
+/*
+keep track of the scores
+*/
+let humanScore = 0;
+let computerScore = 0;
+
+/*
+LOgic to play a single round
+*/
+function playRound (humanChoice, ComputerChoice) {
+
+}
