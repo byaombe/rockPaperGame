@@ -20,14 +20,18 @@ function getComputerChoice() {
 
     return computerChoice; //RETURN COMPUTER CHOICE
 }
-getComputerChoice();
 
 //Get human choice 
 function getHumanChoice() {
 
 let text;
-let personChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
+let personChoice = prompt("Rock, Paper, or Scissors?");
 
+//check for person choice != null before calling tolowercase()
+if (personChoice !== null) {
+    personChoice = personChoice.toLowerCase();
+
+}
 if (personChoice == "rock"|| personChoice=="paper" || personChoice== "scissors") {
      text = "you have entered " + personChoice;
 } else if ( personChoice == null || personChoice == ""){
@@ -42,47 +46,29 @@ document.getElementById("textChoice").innerHTML = text;
  return personChoice;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function playGame() {
     //keep track of the scores
-
 let humanScore = 0;
 let computerScore = 0;
 
+function playGame() {
 
-for (let i = 0; i < 3; i++) {
-    playRound();
-}
-const personChoice = getHumanChoice(); //get human choice
+
+
+for (let i = 0; i < 5; i++) {
+    const personChoice = getHumanChoice(); //get human choice
 if (personChoice == null) {
     return; //exit if input is invalid
 }
-const computerChoice = getComputerChoice(); //get computer choice
+    const computerChoice = getComputerChoice(); //get computer choice
 
-//call plaRound with both choices
+
+    //call plaRound with both choices
 playRound(personChoice, computerChoice)
-/*
-LOgic to play a single round
-*/
+
+}
+
+//LOgic to play a single round
+
 function playRound (personChoice, computerChoice) {
     let announce;
 
@@ -98,12 +84,26 @@ function playRound (personChoice, computerChoice) {
     announce = "YOU LOSE, COMPUTER WINS";
     computerScore++; //incriment computer score
 }
-   document.getElementById("winner").innerHTML = announce;
-}
-playRound()
+   
+   //get the scores
+   document.getElementById("human").innerHTML = "human Score is: " + humanScore;
+   document.getElementById("computer").innerHTML = "computer Score is: " + computerScore;
+
+    //ANNOUNCE WINNER
+    document.getElementById("winner").innerHTML = announce;
 
 }
-playGame();
+
+}
+//call the function on button click
+
+document.getElementById("button1").addEventListener("click", function(){
+  playGame();  
+})
+
+
+
+
 
 
 
